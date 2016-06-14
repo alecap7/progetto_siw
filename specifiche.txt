@@ -1,0 +1,29 @@
+### Consulta Offerta:
+
+  1)Un utente non autenticato consulta le tipologie di esame
+  2)L'utente sceglie una tipologia di esame e ne richiede i dettagli 
+  3)Il sistema mostra i dettagli della tipologia di esame scelta dall'utente
+  
+  -L'utente ripete i passi precedenti un numero indefinito di volte
+  -In qualsiasi momento l'utente può tornare al passo 1 (ottenendo un catalogo eventualmente aggiornato) 
+   tramite il pulsante "aggiorna catalogo"
+   
+### Crea Esame
+
+  1)L'amministrazione inizia la creazione di un esame
+  2)L'amministrazione inserisce un codice relativo all'esame
+  3)L'amministrazione imposta una tipologia di esame all'esame creato (inserendo un codice per la tipologia)
+  4)L'amministrazione associa un paziente all'esame creato (inserendo l'username relativo al paziente)
+  5)L'amministrazione inserisce la data in cui verrà effettuato l'esame
+  6)L'amministrazione preme il pulsante "termina"
+  7)Il sistema registra l'esame (impostando automaticamente la data di prenotazione) e mostra un messaggio di successo
+  
+### Inserimento Risultati Esame
+
+  1)L'amministrazione inserisce un codice esame
+  2)Il sistema presenta all'amministratore l'esame corrispondente al codice immesso
+  3)L'amministratore inserisce tutti i risultati dell'esame
+  
+
+
+  
