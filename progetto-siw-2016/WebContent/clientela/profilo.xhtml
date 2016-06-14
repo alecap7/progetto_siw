@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" />
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
+</head>
+<body>
+	<ui:include src="/WEB-INF/pazienteNavbar.xhtml" />
+
+	<div class="container">
+	<h3>Dati Paziente</h3>
+		<table class="table table-hover">
+			<tr class="info">
+				<th>Nome</th>
+				<th>Cognome</th>
+				<th>Data di Nascita</th>
+			</tr>
+			<tr class="info">
+				<td>${utenteController.utenteLoggato.nome}</td>
+				<td>${utenteController.utenteLoggato.cognome}</td>
+				<td>${utenteController.utenteLoggato.dataDiNascita}</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

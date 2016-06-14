@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" />
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
+</head>
+<body>
+	<ui:include src="/WEB-INF/pazienteNavbar.xhtml" />
+
+	<div class="container">
+		<h3>Esami</h3>
+		<table class="table table-hover">
+			<tr class="info">
+				<th>Codice Esame</th>
+			</tr>
+			<ui:repeat var="esame"
+				value="#{utenteController.utenteLoggato.esami}" varStatus="stato">
+				<tr class="info">
+					<td><h:outputLink value="dettaglioEsame.xhtml">
+					#{esame.codice}
+					<f:param name="esameIndex" value="#{stato.index}" />
+						</h:outputLink></td>
+				</tr>
+			</ui:repeat>
+		</table>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+<head>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" />
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
+</head>
+<body>
+	<ui:include src="/WEB-INF/adminNavbar.xhtml" />
+	<div class="container">
+		<h:form class="form-horizontal"
+			rendered="#{esameController.esame eq null}">
+				<div class="form-group">
+					<div class="col-sm-10">
+						<h:inputText value="#{esameController.codice}"
+							class="form-control" p:placeholder="codice-esame" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<h:commandButton class="btn btn-default" value="submit"
+							action="#{esameController.retrieveEsame}" />
+					</div>
+				</div>
+			</h:form>
+			<h:form class="form-horizontal"
+				rendered="#{not(esameController.esame eq null)}">
+				<h:dataTable class="table table-hover"
+					value="#{esameController.esame.tipologia.risultati}"
+					var="risultato">
+					<h:column>#{risultato}</h:column>
+					<h:column>
+						<h:inputText value="#{esameController.esame.risultati[risultato]}" />
+					</h:column>
+				</h:dataTable>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<h:inputText value="#{esameController.nomeMedico}"
+							class="form-control" p:placeholder="nomeMedico" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<h:inputText value="#{esameController.cognomeMedico}"
+							class="form-control" p:placeholder="cognomeMedico" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<h:commandButton class="btn btn-default" value="aggiorna"
+							action="#{esameController.updateEsame}" />
+					</div>
+				</div>
+			</h:form>
+	</div>
+</body>
+</html>

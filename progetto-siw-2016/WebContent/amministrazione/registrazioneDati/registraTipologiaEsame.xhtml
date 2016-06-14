@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+<head>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" />
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
+</head>
+<body>
+	<ui:include src="/WEB-INF/adminNavbar.xhtml" />
+	<div class="container">
+		<h2>Registrazione Tipologia Esame</h2>
+		<h3>Info generali</h3>
+		<h:form class="form-horizontal" role="form"
+			rendered="#{tipologiaEsameController.tipologiaEsameCorrente eq null}">
+			<div class="form-group">
+				<div class="col-sm-10">
+					<h:inputText value="#{tipologiaEsameController.codice}"
+						class="form-control" p:placeholder="codice" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10">
+					<h:inputText value="#{tipologiaEsameController.nome}"
+						class="form-control" p:placeholder="nome" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10">
+					<h:inputText value="#{tipologiaEsameController.descrizione}"
+						class="form-control" p:placeholder="descrizione" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10">
+					<h:inputText value="#{tipologiaEsameController.costo}"
+						class="form-control" p:placeholder="costo">
+						<f:validateDoubleRange minimum="0" />
+					</h:inputText>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<h:commandButton class="btn btn-default" value="continua"
+						action="#{tipologiaEsameController.iniziaCreazione}" />
+				</div>
+			</div>
+		</h:form>
+
+		<ui:fragment
+			rendered="#{not(tipologiaEsameController.tipologiaEsameCorrente eq null)}">
+			<table class="table table-hover">
+				<tr class="info">
+					<th>Codice</th>
+					<th>Nome</th>
+					<th>Descrizione</th>
+					<th>Costo</th>
+				</tr>
+				<tr class="info">
+					<td>${tipologiaEsameController.tipologiaEsameCorrente.codice}</td>
+					<td>${tipologiaEsameController.tipologiaEsameCorrente.nome}</td>
+					<td><p style="width: 100px; word-wrap: break-word;">${tipologiaEsameController.tipologiaEsameCorrente.descrizione}</p></td>
+					<td>${tipologiaEsameController.tipologiaEsameCorrente.costo}</td>
+				</tr>
+			</table>
+			<h3>Prerequisiti</h3>
+			<h:dataTable class="table table-hover"
+				value="#{tipologiaEsameController.tipologiaEsameCorrente.prerequisiti.entrySet().toArray()}"
+				var="entry">
+				<h:column>#{entry.key}</h:column>
+				<h:column>#{entry.value}</h:column>
+			</h:dataTable>
+			<h:form class="form-horizontal" role="form">
+				<div class="form-group">
+					<div class="col-sm-10">
+						<h:inputText
+							value="#{tipologiaEsameController.etichettaPrerequisito}"
+							class="form-control" p:placeholder="etichetta" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<h:inputText
+							value="#{tipologiaEsameController.descrizionePrerequisito}"
+							class="form-control" p:placeholder="nome" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<h:commandButton class="btn btn-default" value="aggiungi"
+							action="#{tipologiaEsameController.aggiungiPrerequisito}" />
+					</div>
+				</div>
+			</h:form>
+
+			<h3>Risultati</h3>
+
+			<h:dataTable class="table table-hover"
+				value="#{tipologiaEsameController.tipologiaEsameCorrente.risultati}"
+				var="entry">
+				<h:column>#{entry}</h:column>
+			</h:dataTable>
+
+			<h:form class="form-horizontal" role="form">
+				<div class="form-group">
+					<div class="col-sm-10">
+						<h:inputText
+							value="#{tipologiaEsameController.etichettaRisultato}"
+							class="form-control" p:placeholder="etichetta" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<h:commandButton class="btn btn-default" value="aggiungi"
+							action="#{tipologiaEsameController.aggiungiRisultato}" />
+					</div>
+				</div>
+			</h:form>
+			<h:form class="form-horizontal" role="form">
+				<h:commandButton class="btn btn-default" value="termina"
+					action="#{tipologiaEsameController.terminaCreazione}" />
+			</h:form>
+		</ui:fragment>
+	</div>
+</body>
+</html>

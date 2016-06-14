@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<h2>
+		Area Protetta - <span class="glyphicon glyphicon-user"
+			style="font-size: 14px">${utenteController.utenteLoggato.username}</span>
+	</h2>
+
+	<h:form class="form-inline" style="margin-top:10px;margin-right:150px;float:right"
+		role="form">
+		<h:commandLink value="logout" action="#{utenteController.logout}">
+			<span class="glyphicon glyphicon-log-out" style="font-size: 10px" />
+		</h:commandLink>
+	</h:form>
+	
+	<ul class="nav nav-tabs" role="tablist">
+		<li
+			class="#{view.viewId eq '/clientela/profilo.xhtml' ? 'active' : ''}"><a
+			href="#{request.contextPath}/clientela/profilo.xhtml">Profilo</a></li>
+		<li class="#{view.viewId eq '/clientela/esami.xhtml' ? 'active' : ''}"><a
+			href="#{request.contextPath}/clientela/esami.xhtml">Consultazione
+				Esami</a></li>
+	</ul>
+</ui:composition>

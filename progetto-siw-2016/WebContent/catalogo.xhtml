@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" />
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
+</head>
+<body>
+	<ui:include src="/WEB-INF/navbar.xhtml" />
+
+	<div class="container">
+		<h3>Tipologie Esami</h3>
+		<h:form>
+			<table class="table table-hover">
+				<tr class="info">
+					<th>Tipologia</th>
+				</tr>
+				<ui:repeat var="tipologia"
+					value="#{tipologiaEsameController.tipologie}" varStatus="stato">
+					<tr class="info">
+						<td>${tipologia.nome}</td>
+						<td><h:commandButton value="Dettaglio"
+								rendered="#{param['tipologiaIndex'] ne stato.index}">
+								<f:param name="tipologiaIndex" value="#{stato.index}" />
+							</h:commandButton></td>
+						<td><h:outputText
+								rendered="#{param['tipologiaIndex'] eq stato.index}"
+								value="Descrizione : #{tipologia.descrizione}" /><br /> <h:outputText
+								rendered="#{param['tipologiaIndex'] eq stato.index}"
+								value="Costo : #{tipologia.costo}" /><br /> <h:dataTable
+								class="table table-hover"
+								rendered="#{param['tipologiaIndex'] eq stato.index}"
+								value="#{tipologia.prerequisiti.entrySet().toArray()}"
+								var="entry">
+								<h:column>#{entry.key}</h:column>
+								<h:column>#{entry.value}</h:column>
+							</h:dataTable> <h:commandButton value="Nascondi dettaglio"
+								rendered="#{param['tipologiaIndex'] eq stato.index}" /></td>
+					</tr>
+				</ui:repeat>
+			</table>
+			<h:commandButton action="#{tipologiaEsameController.retrieveTipologie}" value="aggiorna catalogo"/>
+		</h:form>
+	</div>
+</body>
+</html>

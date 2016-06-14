@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js" />
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
+</head>
+<body>
+	<ui:include src="/WEB-INF/pazienteNavbar.xhtml" />
+	<c:set var="esame"
+		value="#{utenteController.utenteLoggato.esami.get(param['esameIndex'])}" />
+	<div class="container">
+		<h3>Dettaglio Esame</h3>
+		<table class="table table-hover">
+			<tr class="info">
+				<th>Codice</th>
+				<th>Tipologia</th>
+				<th>Data Prenotazione</th>
+				<th>Data Esame</th>
+				<th>Effettuato da</th>
+			</tr>
+			<tr class="info">
+				<td>${esame.codice}</td>
+				<td>${esame.tipologia.nome}</td>
+				<td>${esame.dataPrenotazione}</td>
+				<td>${esame.dataEsame}</td>
+				<td>${esame.medico.nome} ${esame.medico.cognome}</td>
+			</tr>
+		</table>
+		<h3>Risultati</h3>
+		<h:dataTable class="table table-hover"
+			value="#{esame.risultati.entrySet().toArray()}"
+			var="entry">
+			<h:column>#{entry.key}</h:column>
+			<h:column>#{entry.value}</h:column>
+		</h:dataTable>
+	</div>
+
+</body>
+</html>

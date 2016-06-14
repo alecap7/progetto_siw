@@ -1,0 +1,14 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<h2>Clinica</h2>
+	<ul class="nav nav-tabs" role="tablist">
+		<li class="#{view.viewId eq '/index.xhtml' ? 'active' : ''}"><a
+			href="#{request.contextPath}/index.xhtml">Home</a></li>
+		<li class="#{view.viewId eq '/catalogo.xhtml' ? 'active' : ''}"><a
+			href="#{request.contextPath}/catalogo.xhtml">Catalogo Esami</a></li>
+		<li class="#{view.viewId eq '/login.xhtml' ? 'active' : ''}"><a
+			href="#{request.contextPath}/login.xhtml">Accedi</a></li>
+	</ul>
+</ui:composition>
