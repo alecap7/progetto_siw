@@ -6,23 +6,62 @@
   
   -L'utente ripete i passi precedenti un numero indefinito di volte
   -In qualsiasi momento l'utente può tornare al passo 1 (ottenendo un catalogo eventualmente aggiornato) 
-   tramite il pulsante "aggiorna catalogo"
    
 ### Crea Esame
 
   1)L'amministrazione inizia la creazione di un esame
-  2)L'amministrazione inserisce un codice relativo all'esame
-  3)L'amministrazione imposta una tipologia di esame all'esame creato (inserendo un codice per la tipologia)
-  4)L'amministrazione associa un paziente all'esame creato (inserendo l'username relativo al paziente)
-  5)L'amministrazione inserisce la data in cui verrà effettuato l'esame
-  6)L'amministrazione preme il pulsante "termina"
-  7)Il sistema registra l'esame (impostando automaticamente la data di prenotazione) e mostra un messaggio di successo
+  2)Il sistema presenta un modulo per raccogliere i dati necessari alla creazione
+  3)L'amministrazione inserisce un codice relativo all'esame
+  4)L'amministrazione imposta una tipologia di esame all'esame creato (inserendo un codice per la tipologia)
+  5)L'amministrazione associa un paziente all'esame creato (inserendo l'username relativo al paziente)
+  6)L'amministrazione inserisce la data in cui verrà effettuato l'esame
+  7)L'amministrazione termina la creazione
+  8)Il sistema registra l'esame (impostando automaticamente la data di prenotazione) e mostra un messaggio di successo
   
 ### Inserimento Risultati Esame
 
   1)L'amministrazione inserisce un codice esame
-  2)Il sistema presenta all'amministratore l'esame corrispondente al codice immesso
+  2)Il sistema presenta all'amministratore l'esame corrispondente al codice immesso, con un modulo per l'inserimento dei risultati
   3)L'amministratore inserisce tutti i risultati dell'esame
+  4)L'amministrazione associa (inserendo nome e cognome) il medico che ha condotto l'esame
+  5)Il sistema registra gli aggiornamenti e mostra un messaggio di successo
+  
+### Inserimento Tipologia Esame
+ 1)L'amministratore inizia la creazione di una nuova tipologia di esame
+ 2)Il sistema presenta un modulo per raccogliere i alcuni dati necessari per la creazione
+ 3)L'amministrazione inserisce un codice, un nome, una descrizione e un costo per la tipologia di esame
+ 4)Il sistema presenta un modulo per raccogliere i restanti dati necessari per la creazione
+ 5)L'amministrazione inserisce un prerequisito
+ 6)L'amministrazione inserisce un risultato
+ 7)L'amministrazione termina la creazione
+ 8)Il sistema registra la tipologia di esame e mostra un messaggio di successo
+
+  -I punti 5-6 vengono ripetuti fino a che necessario
+  
+### Esami Effettuati Da Un Medico
+  1)L’amministratore fornisce nome e cognome di un medico
+  2)Il sistema mostra all’amministratore nome, cognome, specializzazione e tutti gli esami effettuati dal medico
+
+### Consulta Risultati Proprio Esame
+
+  1)Il paziente consulta l'elenco dei propri esami
+  2)Il sistema mostra al paziente l'elenco dei suoi esami
+  3)Il paziente chiede il dettaglio di un esame
+  4)Il sistema mostra il dettaglio dell'esame
+  -Il paziente ripete i passi precedenti finché necessario
+
+### Autentica Utente
+
+  1)Un utente non autenticato vuole accedere al sistema
+  2)Il sistema presenta un modulo per l'inserimento delle credenziali
+  3)L'utente inserisce le proprie credenziali
+  4)Il sistema controlla le credenziali inserite:
+    4a)Il sistema autentica l'utente come amministratore e rimanda ad un pannello amministrativo
+    4b)Il sistema autentica l'utente come paziente e rimanda ad un'area protetta
+    4c)Le credenziali inserite non hanno corrispondenza, il sistema rimanda al punto 2
+  5)L'utente può svolgere le azioni di proprio interesse, in base al proprio ruolo  
+
+
   
 
 
