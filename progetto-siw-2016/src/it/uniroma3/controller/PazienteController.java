@@ -14,7 +14,7 @@ public class PazienteController{
 	private final static String RUOLO = "paziente";
 	
 	private String username;
-    private String password;
+    	private String password;
 	private String nome;
 	private String cognome;
 	private Date dataDiNascita;
